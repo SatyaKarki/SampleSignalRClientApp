@@ -13,11 +13,9 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-//Receiving message
+//Below method is for Receiving message
 connection.on("receiveEvent", function (message) {
-    if (message.nodeEventType.includes("Stratis.Bitcoin.EventBus.CoreEvents.BlockConnected")) {
-        if (message.height) {
-            document.getElementById('lblHeight').innerHTML = ` ${message.height}`;
-        }
+    if (message.headerHeight) {
+        document.getElementById('lblHeight').innerHTML = ` ${message.headerHeight}`;
     }
 })
